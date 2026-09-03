@@ -1,0 +1,53 @@
+{
+  "students": [
+    {
+      "name": "Ali",
+      "marks": [
+        80,
+        90,
+        70
+      ],
+      "average": 80.0,
+      "grade": "B"
+    },
+    {
+      "name": "Sara",
+      "marks": [
+        95,
+        85,
+        100
+      ],
+      "average": 93.33333333333333,
+      "grade": "A"
+    },
+    {
+      "name": "Danish",
+      "marks": [
+        60,
+        75,
+        88
+      ],
+      "average": 74.33333333333333,
+      "grade": "C"
+    },
+    {
+      "name": "Muhammad",
+      "marks": [
+        47
+      ],
+      "average": 47.0,
+      "grade": "F"
+    },
+    {
+      "name": "rahim",
+      "marks": [
+        76
+      ],
+      "average": 76.0,
+      "grade": "C"
+    }
+  ],
+  "class_average": 74.13333333333333,
+  "highest_average": 93.33333333333333,
+  "lowest_average": 47.0
+}
