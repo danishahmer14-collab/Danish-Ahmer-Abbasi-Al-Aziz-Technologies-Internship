@@ -25,13 +25,12 @@ I used a new virtual environment for this task and installed the necessary libra
 
 ## Key Learnings
 Firstly I revised the concept of machine learning — teaching machines to find
-Identify patterns in data and make predictions based on data. This was then revised to AI vs
-This course examines the differences between Machine Learning and Deep Learning, as well as how AI is transforming machines to operate intelligently and using a set of rules.
+Identify patterns in data and make predictions based on data.Then I revised AI vs
+Machine Learning and Deep Learning, as well as how AI is transforming machines to operate intelligently and using a set of rules.
 systems, robotics, etc.). AI is a part of ML, in which machines learn from data.
 Rather than hard coded rules. Deep Learning is a part of ML that employs
-Multi-layered neural networks to do complex calculations. Supervised
-In learning, there are labelled data and in unsupervised learning, there are unlabeled data.
-Classification: Classification of data into categories (e.g. spam or not spam)
+Multi-layered neural networks to do complex calculations. Supervised learning, data is labelled and in unsupervised learning, data is unlabeled.
+Classification means Classification of data into categories (e.g. spam or not spam)
 and works for supervised learning, while regression is a supervised learning
 task whose output is a real number (e.g. fare, price, stocks).
 Clustering is an unsupervised learning problem where similar data points are grouped together.
@@ -42,7 +41,7 @@ predict (survived). Training / Testing / Validation Data Training data is what
 the model learns from. The cost of providing the test data is high, and it is not used to train the model.
 — only used to see if model is working well on data not used to train the model. Validation data is
 An optional third split during development to fine tune settings without losing data.
-Contacting the last test set. Data Preprocessing is cleaning and preparing raw
+Data Preprocessing is cleaning and preparing raw
 Data before feeding it to model. Train/Test Split is splitting your data so that
 The model will not "cheat" by training and testing on the same data —
 imitates its performance on "real unseen data". Feature Scaling — putting
