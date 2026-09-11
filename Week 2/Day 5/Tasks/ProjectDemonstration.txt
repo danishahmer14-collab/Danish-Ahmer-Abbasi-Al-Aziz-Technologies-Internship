@@ -1,0 +1,120 @@
+=====================================================================
+TITANIC SURVIVAL PREDICTION
+This is the Week 2 Project for A Complete Machine Learning Pipeline.
+=====================================================================
+Pipeline Steps: Data Cleaning, EDA, Preprocessing, Model Training, Evaluation
+
+---------------------------------------------------------
+1. THE PROBLEM & THE DATASET
+---------------------------------------------------------
+Is it possible to tell if someone who was a passenger on the Titanic survived? 
+What did they have in common with each other, and how did they get there?
+
+Target: Predict survival (0 = Did not survive, 1 = Survived)
+
+This dataset includes 6 out of the 15 original columns:
+- pclass (ticket class)
+- sex
+- age
+- fare
+- sibsp (siblings/spouses aboard)
+- parch (parents/children aboard)
+
+Dataset Summary: 891 Passengers in total. 
+Data source: Titanic (The built-in dataset in seaborn)
+
+
+---------------------------------------------------------
+2. DATA CLEANING
+---------------------------------------------------------
+Real data is messy... this is what needed to be addressed before analysis:
+
+* Column: age
+  Issue: 177 missing values (~20%)
+  Action: Filled with median (robust to outliers)
+
+* Column: embark_town
+  Issue: 2 missing values
+  Action: Filled with mode (most common port)
+
+* Column: deck
+  Issue: 688 missing values (~77%)
+  Action: Dropped — Not enough data to be useful
+
+Result: No missing values are left in any feature used to model. Every cleaning decision was deliberate to clear up errors; nothing was automatic.
+
+
+---------------------------------------------------------
+3. EXPLORATORY DATA ANALYSIS (EDA)
+---------------------------------------------------------
+Which factors are associated with living?
+* The strongest correlation with survival is pclass (-0.34) — a lower class number (1st class) means there are better chances of survival.
+* Fare is positively correlated (+0.26) — higher fares (often 1st class) link to improved survival rates, which is also associated with higher nutritional intake.
+* There is a weak correlation between age and sibsp — family size and age alone do not predict survival independently very well.
+
+Visual Patterns Identified:
+* The distribution of age is approximately normal with an average around 25–35.
+* There were more non-survivors than survivors — a moderately imbalanced dataset.
+* The price trend is seen with average fare plummeting from 1st class to 3rd class.
+
+
+---------------------------------------------------------
+4. PREPROCESSING FOR ML
+---------------------------------------------------------
+Cleaning and preparing the data for the machine learning algorithms:
+
+1. Encode Categories: 'sex' (male/female) → numbers (0/1).
+2. Feature Scaling: Standard Scaler was used to prevent any feature size from dominating.
+3. Train/Test Split: 80% training (712 rows), 20% testing (179 rows).
+
+Why split the data? 
+So the model is tested with data that it hasn't encountered before — which is a representation of real-world performance, not memorization.
+
+
+---------------------------------------------------------
+5. FOUR MODELS, HEAD-TO-HEAD
+---------------------------------------------------------
+* Logistic Regression: A linear model to estimate survival probability.
+* Decision Tree: A tree that splits data based on a set of Yes/No questions.
+* Random Forest: An ensemble of many decision trees, averaged.
+* K-Nearest Neighbors (KNN): Classifies based on the most similar passengers.
+
+All four were trained on the same features and evaluated using accuracy, precision, recall, F1-score, and 5-fold cross-validation.
+
+
+---------------------------------------------------------
+6. RESULTS COMPARISON
+---------------------------------------------------------
+Model                | Accuracy | Precision | Recall | F1-score | CV Acc. | Overfit Gap
+---------------------------------------------------------------------------------------
+Random Forest        |  0.799   |   0.764   | 0.743  |  0.753   |  0.811  |   0.180
+Logistic Regression  |  0.799   |   0.779   | 0.716  |  0.746   |  0.786  |   0.004
+K-Nearest Neighbors  |  0.788   |   0.750   | 0.730  |  0.740   |  0.820  |   0.077
+Decision Tree        |  0.754   |   0.708   | 0.689  |  0.699   |  0.780  |   0.225
+
+Honest Takeaway: 
+Both Decision Tree and Random Forest have large overfit gaps (0.18–0.22) — they fit the training data much better than the test data. Logistic Regression is consistent with a very small difference (0.004). The top score isn't the only part of the model that matters; there's a balance to be struck.
+
+
+---------------------------------------------------------
+7. SELECTED MODEL: RANDOM FOREST
+---------------------------------------------------------
+Winner: Random Forest (with 0.753 F1-Score)
+
+Reading the confusion matrix (179 test passengers):
+* 88 correctly predicted did not survive (true negatives)
+* 55 correctly predicted as survived (true positives)
+* 17 false positives — predicted survived, but did not
+* 19 false negatives — predicted did not survive, but did
+
+The next step in production: 
+Tune hyperparameters (such as max_depth or min_samples_leaf) to reduce the overfitting gap observed in the comparison.
+
+
+---------------------------------------------------------
+8. KEY LEARNINGS
+---------------------------------------------------------
+1. The first decision in data cleaning has consequences that travel downstream — dropping the deck or imputing age both influenced the models' learning.
+2. The best model according to the score is not necessarily the best model overall. Random Forest won on F1, but it has a very real disadvantage in terms of its tendency to overfit, which is worth pointing out.
+3. Cross-validation provides a more reliable estimate of performance than a single train/test split.
+4. EDA, preprocessing, and evaluation are interdependent — this was one connected pipeline, not separate exercises.
