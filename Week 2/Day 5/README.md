@@ -31,4 +31,4 @@ This project combined the entire week into one actual workflow of isolated exerc
 - `MODEL_EVALUATION_REPORT.md` — Full model comparison, analysis, and final
   model recommendation.
 - `requirements.txt` — Python packages needed to run the project.
-- 'ProjectDemonstration.txt' contains demonstration of my project 
+- 'ProjectDemonstration.txt'— contains demonstration of my project 
