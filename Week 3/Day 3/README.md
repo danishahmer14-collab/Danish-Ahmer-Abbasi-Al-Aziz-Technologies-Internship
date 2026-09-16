@@ -28,5 +28,4 @@ I watched the training and validation loss go down steadily with epochs (at epoc
 ## Files in this folder
 - `Tasksw3d3.py` — main training script: builds, trains, and evaluates the neural network on MNIST, with configurable optimizer/learning rate/dropout/batch size.
 - `best_model.pt` — saved checkpoint of the best-performing model (lowest validation loss) during training.
-- `data/` — MNIST dataset, auto-downloaded by the script on first run.
 - `training_curves.png` -Contains Saved training curves as png.
