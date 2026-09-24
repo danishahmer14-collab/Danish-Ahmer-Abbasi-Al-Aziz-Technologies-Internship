@@ -32,4 +32,5 @@ Building this autonomous agent proved the complexity of production-level AI, sho
 - `company_data.db` — The generated local database file used by the agent for SQL execution.
 - `check_models.py` — Utility script to query the Groq API and list all active, permitted model IDs for the current API key.
 - `agent.py` — The core backend logic containing the LangGraph state machine, database schema extraction, LLM node definitions, and self-correction routing.
-- `app.py` — The Streamlit frontend application that provides the interactive user interface and visualizes the agent's database results and process
+- `app.py` — The Streamlit frontend application that provides the interactive user interface and visualizes the agent's database results and process.
+- `Week4 Presentation.ppy`  — Is the Presentation for Project Demonstration.
