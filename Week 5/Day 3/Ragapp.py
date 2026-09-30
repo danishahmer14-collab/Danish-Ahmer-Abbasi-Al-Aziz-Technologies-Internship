@@ -1,12 +1,3 @@
-"""
-RAG app with LangChain + Groq/xAI (chat) + local HuggingFace embeddings + Chroma.
-
-Usage:
-    1. pip install -r requirements.txt
-    2. Copy .env.example to .env and put your key in it
-    3. Put .pdf / .txt / .md files inside ./docs
-    4. python rag_app.py
-"""
 import os
 from pathlib import Path
 
@@ -24,7 +15,6 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 DOCS_DIR = Path("docs")
 DB_DIR = "chroma_db_hf"
 
-# ---------------------------------------------------------------- 1. MODELS
 PROVIDER = os.getenv("LLM_PROVIDER", "groq").lower()
 
 if PROVIDER == "groq":
@@ -38,11 +28,9 @@ elif PROVIDER == "xai":
 else:
     raise SystemExit("LLM_PROVIDER must be 'groq' or 'xai' (check your .env file)")
 
-# Local embeddings: free, no API key. Downloads ~90MB the first time.
 embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 
 
-# ------------------------------------------------- 2. INDEXING (run once)
 def load_documents():
     docs = []
     for path in DOCS_DIR.rglob("*"):
@@ -70,11 +58,9 @@ def get_vectorstore():
 
 
 vectorstore = get_vectorstore()
-
-# --------------------------------------------------------- 3. RETRIEVER
 retriever = vectorstore.as_retriever(search_type="mmr", search_kwargs={"k": 4})
 
-# ------------------------------------------- 4. PROMPTS + CHAINS (LCEL)
+
 condense_prompt = ChatPromptTemplate.from_template(
     "Given the chat history and a follow-up question, rewrite the follow-up "
     "as a standalone question. Return ONLY the question.\n\n"
@@ -99,7 +85,6 @@ def format_docs(docs):
     )
 
 
-# ------------------------------------------------ 5. MEMORY + RAG PIPELINE
 history: list[tuple[str, str]] = []
 
 
@@ -116,9 +101,7 @@ def ask(question: str):
     history.append((question, answer))
     sources = sorted({f"{d.metadata.get('source', '?')} (p.{d.metadata.get('page', '-')})" for d in docs})
     return answer, sources
-
-
-# ------------------------------------------------------------- 6. CLI LOOP
+    
 if __name__ == "__main__":
     print(f"RAG chatbot ready (provider: {PROVIDER}). Type 'exit' to quit.\n")
     while True:
