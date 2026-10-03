@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+python-multipart
+pydantic-settings
+chromadb
+langchain-core
+langchain-text-splitters
+sentence-transformers
+openai
+pypdf
+pytest
+httpx
+transformers<5
+sentence-transformers<4
