@@ -1,13 +1,15 @@
 # Week 6 — Day 5
 
 ## Task(s) Assigned
-_What was assigned today._
+Submission of Master Project
 
 ## What I Did
-_Steps taken / code written / tools used._
+I Tested my Master project and evaluated it the long report is submitted in Week 6 Day 5 folder in this repository.
 
 ## Key Learnings
-_Summary of what I learned today, in my own words._
+From development to Deployment I learned many things Evaluating the model is a tough choice that effects our results
 
 ## Files in this folder
-- ``  — description
+- `AI_Call_QA`  — This folder contains all the file to run my project.
+- `AI_Call_QAFF.pdf` — Contains a Long report of my project
+  
