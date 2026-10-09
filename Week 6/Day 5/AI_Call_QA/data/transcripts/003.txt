@@ -1,0 +1,31 @@
+Rep: Thank you for calling Plan Quotes. This is Martin on a recorded line. How are you today?
+
+Customer: I'm fine.
+
+Rep: Looks like you inquired about Medicare Plan benefits from our website.
+
+Customer: Yes.
+
+Rep: Do you have Medicare Parts A and B?
+
+Customer: Yes.
+
+Rep: Do you make your own decisions regarding Medicare?
+
+Customer: Yes.
+
+Rep: What is your ZIP code?
+
+Customer: 12345.
+
+Rep: Do you have any VA, Tricare, Retirement Plan or Employee Insurance?
+
+Customer: No.
+
+Rep: May I know how do you pronounce your first and last name?
+
+Customer: Frank Peterson.
+
+Rep: Before I connect your call, please say yes at the end of the recording.
+
+Customer: Yes.

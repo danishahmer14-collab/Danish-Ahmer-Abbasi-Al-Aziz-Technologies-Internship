@@ -1,0 +1,26 @@
+========================================
+        AI CALL QA REPORT
+========================================
+
+Call File: 003.txt
+Status: RED
+
+VIOLATIONS
+----------------------------------------
+
+Rule ID: 300
+Violation: age
+Severity: CRITICAL
+Reason: Required qualification question was not detected.
+
+----------------------------------------
+
+Rule ID: 304
+Violation: Qualification Before Disclaimer
+Severity: CRITICAL
+Transcript Line: 29
+Evidence: Before I connect your call, please say yes at the end of the recording.
+Reason: age was not detected before the disclaimer.
+
+----------------------------------------
+

@@ -1,0 +1,351 @@
+{
+    "campaign": "Medicare Transfer",
+
+    "settings": {
+        "green_if_no_critical_violation": true,
+        "red_if_any_critical_violation": true,
+        "max_not_interested_rebuttals": 1
+    },
+
+    "ordered_rules": [
+
+        {
+            "id": 1,
+            "title": "Opening Greeting",
+            "type": "ordered_phrase",
+            "speaker": "rep",
+            "required_phrases": [
+                "thank you for calling"
+            ],
+            "must_be_first_rep_rule": true,
+            "critical": true
+        },
+
+        {
+            "id": 2,
+            "title": "Website Inquiry",
+            "type": "ordered_phrase",
+            "speaker": "rep",
+            "required_phrases": [
+                "looks like you inquire about medicare plan benefits from our website",
+                "looks like you inquired about medicare plan benefits from our website",
+                "looks like you inquire about medicare plan benefits"
+            ],
+            "must_come_after_rule": 1,
+            "critical": true
+        },
+
+        {
+            "id": 3,
+            "title": "Qualification Questions",
+            "type": "flexible_group",
+            "critical": true,
+
+            "required_questions": [
+
+                {
+                    "name": "medicare_parts_a_b",
+                    "speaker": "rep",
+                    "phrases": [
+                        "medicare parts a and b",
+                        "medicare part a and b",
+                        "parts a and b",
+                        "part a and part b"
+                    ]
+                },
+
+                {
+                    "name": "name",
+                    "speaker": "rep",
+                    "phrases": [
+                        "pronounce your first and last name",
+                        "how do you pronounce your first and last name",
+                        "your first and last name"
+                    ]
+                },
+
+                {
+                    "name": "age",
+                    "speaker": "rep",
+                    "phrases": [
+                        "how old are you",
+                        "may i know how old you are",
+                        "what is your age"
+                    ]
+                },
+
+                {
+                    "name": "zipcode",
+                    "speaker": "rep",
+                    "phrases": [
+                        "zip code",
+                        "zipcode",
+                        "what is your zip"
+                    ]
+                },
+
+                {
+                    "name": "insurance",
+                    "speaker": "rep",
+                    "phrases": [
+                        "va",
+                        "tricare",
+                        "retirement plan",
+                        "employee insurance"
+                    ]
+                },
+
+                {
+                    "name": "decision_maker",
+                    "speaker": "rep",
+                    "phrases": [
+                        "do you make your own decisions regarding medicare",
+                        "do you make your own decisions",
+                        "who makes your decisions regarding medicare"
+                    ]
+                }
+            ]
+        },
+
+        {
+            "id": 4,
+            "title": "Audio Disclaimer",
+            "type": "ordered_phrase",
+            "speaker": "rep",
+            "required_phrases": [
+                "please say yes"
+            ],
+            "must_come_after_rule": 3,
+            "critical": true
+        },
+
+        {
+            "id": 5,
+            "title": "Customer Consent",
+            "type": "customer_consent",
+            "speaker": "customer",
+            "required_phrases": [
+                "yes",
+                "yeah",
+                "i agree"
+            ],
+            "must_come_after_rule": 4,
+            "critical": true
+        }
+    ],
+
+    "conditional_rules": [
+
+        {
+            "id": 301,
+            "title": "Customer Does Not Remember Website Inquiry",
+            "type": "conditional",
+            "customer_phrases": [
+                "i don't remember",
+                "i do not remember",
+                "don't remember",
+                "not sure",
+                "i dont remember"
+            ],
+            "expected_rep_phrases": [
+                "red white and blue medicare card",
+                "medicare card",
+                "do you have a medicare card"
+            ],
+            "critical": true
+        },
+
+        {
+            "id": 302,
+            "title": "Customer Under 65",
+            "type": "age_condition",
+            "condition": "age < 65",
+            "expected_rep_phrases": [
+                "disability",
+                "are you on social security",
+                "social security",
+                "do you have any disability"
+            ],
+            "critical": true
+        },
+
+        {
+            "id": 303,
+            "title": "Customer Does Not Make Medicare Decisions",
+            "type": "conditional",
+            "customer_phrases": [
+                "no i don't make the decisions",
+                "i don't make the decisions",
+                "i dont make the decisions",
+                "someone else makes my decisions",
+                "no i don't make my own decisions"
+            ],
+            "expected_rep_phrases": [
+                "power of attorney",
+                "who has your power of attorney"
+            ],
+            "critical": true
+        }
+    ],
+
+    "critical_customer_events": [
+
+        {
+            "id": 401,
+            "title": "Customer Requested DNC",
+            "type": "mandatory_end_call",
+            "speaker": "customer",
+            "phrases": [
+                "put me on the dnc list",
+                "put me on dnc",
+                "put me on the do not call list",
+                "do not call me",
+                "do not call",
+                "stop calling me",
+                "stop calling",
+                "take me off your list",
+                "remove me from your list",
+                "remove me",
+                "don't call me again",
+                "dont call me again"
+            ],
+            "required_action": "END_CALL",
+            "severity": "CRITICAL"
+        },
+
+        {
+            "id": 402,
+            "title": "Customer Says Call Is A Scam",
+            "type": "mandatory_end_call",
+            "speaker": "customer",
+            "phrases": [
+                "why are you scamming me",
+                "are you scamming me",
+                "this is a scam",
+                "you are a scam",
+                "you're a scam",
+                "you're scamming me",
+                "you are scamming me",
+                "is this a scam",
+                "why are you calling me",
+                "why are you doing this"
+            ],
+            "required_action": "END_CALL",
+            "severity": "CRITICAL"
+        },
+
+        {
+            "id": 403,
+            "title": "Customer Asks Representative Location",
+            "type": "mandatory_end_call",
+            "speaker": "customer",
+            "phrases": [
+                "where are you located",
+                "where are you located at",
+                "what is your location",
+                "where is your company located",
+                "where are you calling from",
+                "where are you guys located"
+            ],
+            "required_action": "END_CALL",
+            "severity": "CRITICAL"
+        },
+
+        {
+            "id": 404,
+            "title": "Customer Is Not Interested",
+            "type": "not_interested",
+            "speaker": "customer",
+            "phrases": [
+                "not interested",
+                "i am not interested",
+                "i'm not interested",
+                "no thank you",
+                "i don't want it",
+                "i don't want this",
+                "i dont want it",
+                "i dont want this",
+                "not interested in this"
+            ],
+            "max_rebuttals": 1,
+            "severity": "CRITICAL"
+        }
+    ],
+
+    "prohibited_rep_rules": [
+
+        {
+            "id": 501,
+            "title": "Representative Says We Called You",
+            "speaker": "rep",
+            "phrases": [
+                "we called you",
+                "we are calling you",
+                "we're calling you",
+                "i called you",
+                "i am calling you",
+                "i'm calling you",
+                "this call is about your medicare"
+            ],
+            "severity": "CRITICAL"
+        },
+
+        {
+            "id": 502,
+            "title": "Guaranteed Benefit Statement",
+            "speaker": "rep",
+            "phrases": [
+                "you will receive",
+                "you are approved",
+                "you definitely qualify",
+                "you are guaranteed",
+                "guaranteed benefits",
+                "you will get",
+                "you are going to get"
+            ],
+            "severity": "CRITICAL"
+        },
+
+        {
+            "id": 503,
+            "title": "Bad Language",
+            "speaker": "rep",
+            "phrases": [
+                "damn",
+                "stupid",
+                "idiot",
+                "shut up",
+                "what the hell"
+            ],
+            "severity": "CRITICAL"
+        },
+
+        {
+            "id": 504,
+            "title": "Representative Uses Non-Urdu Language",
+            "speaker": "rep",
+            "type": "language_check",
+            "allowed_language": "urdu",
+            "severity": "CRITICAL"
+        }
+    ],
+
+    "rebuttal_rules": {
+
+        "not_interested": {
+            "maximum_allowed_rebuttals": 1,
+
+            "violation_condition": "customer says not interested and representative continues persuasion after one rebuttal",
+
+            "critical": true,
+
+            "examples_of_rebuttal": [
+                "i completely understand",
+                "let me just explain",
+                "just give me a moment",
+                "before you decide",
+                "the reason i'm asking"
+            ]
+        }
+    }
+}

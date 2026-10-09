@@ -1,0 +1,11 @@
+AI CALL QA SUMMARY
+==================
+
+Total Calls : 4
+Red Calls   : 3
+Green Calls : 1
+
+001.txt              GREEN
+002.txt              RED    (2 violations)
+003.txt              RED    (2 violations)
+Red.txt              RED    (8 violations)

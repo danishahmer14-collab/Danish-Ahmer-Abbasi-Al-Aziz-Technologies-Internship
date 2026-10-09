@@ -1,0 +1,66 @@
+========================================
+        AI CALL QA REPORT
+========================================
+
+Call File: Red.txt
+Status: RED
+
+VIOLATIONS
+----------------------------------------
+
+Rule ID: 1
+Violation: Opening Greeting
+Severity: CRITICAL
+Reason: No representative conversation was found.
+
+----------------------------------------
+
+Rule ID: 300
+Violation: medicare_parts_a_b
+Severity: CRITICAL
+Reason: Required qualification question was not detected.
+
+----------------------------------------
+
+Rule ID: 300
+Violation: name
+Severity: CRITICAL
+Reason: Required qualification question was not detected.
+
+----------------------------------------
+
+Rule ID: 300
+Violation: age
+Severity: CRITICAL
+Reason: Required qualification question was not detected.
+
+----------------------------------------
+
+Rule ID: 300
+Violation: zipcode
+Severity: CRITICAL
+Reason: Required qualification question was not detected.
+
+----------------------------------------
+
+Rule ID: 300
+Violation: insurance
+Severity: CRITICAL
+Reason: Required qualification question was not detected.
+
+----------------------------------------
+
+Rule ID: 300
+Violation: decision_maker
+Severity: CRITICAL
+Reason: Required qualification question was not detected.
+
+----------------------------------------
+
+Rule ID: 4
+Violation: Audio Disclaimer
+Severity: CRITICAL
+Reason: Required audio disclaimer was not detected.
+
+----------------------------------------
+
